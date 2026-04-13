@@ -23,7 +23,7 @@ class RemoteButtonService : AccessibilityService() {
         val info = serviceInfo
         info.capabilities = info.capabilities or
                 AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS
-        serviceInfo = info
+        setServiceInfo(info)
     }
 
     override fun onDestroy() {
