@@ -1,6 +1,7 @@
 package com.tvremote.buttonoverride
 
 import android.accessibilityservice.AccessibilityService
+import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Intent
 import android.view.KeyEvent
 import android.view.accessibility.AccessibilityEvent
@@ -15,16 +16,23 @@ class RemoteButtonService : AccessibilityService() {
         instance = this
     }
 
+    override fun onServiceConnected() {
+        super.onServiceConnected()
+        // Programmatically add the key-intercept capability so we don't need
+        // android:canInterceptKeyEvents in the XML (AAPT2 rejects it on some SDK versions)
+        val info = serviceInfo
+        info.capabilities = info.capabilities or
+                AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS
+        serviceInfo = info
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         instance = null
     }
 
     override fun onKeyEvent(event: KeyEvent): Boolean {
-        // Allow all keys through when in detection mode
         if (isDetecting) return false
-
-        // Only act on key-down to avoid double-triggering
         if (event.action != KeyEvent.ACTION_DOWN) return false
 
         val mapping = mappingStore.getMapping(event.keyCode) ?: return false
@@ -33,26 +41,20 @@ class RemoteButtonService : AccessibilityService() {
         if (launchIntent != null) {
             launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
             startActivity(launchIntent)
-            return true // consume the event — prevent original button action
+            return true
         }
 
         return false
     }
 
-    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        // Not needed for key interception
-    }
+    override fun onAccessibilityEvent(event: AccessibilityEvent?) {}
 
-    override fun onInterrupt() {
-        // Service interrupted — nothing to clean up
-    }
+    override fun onInterrupt() {}
 
     companion object {
-        // Expose instance so activities can check service state
         var instance: RemoteButtonService? = null
             private set
 
-        // Set to true to let key events pass through (used during button detection)
         var isDetecting: Boolean = false
 
         fun isRunning(): Boolean = instance != null

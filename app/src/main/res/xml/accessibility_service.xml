@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Accessibility service configuration.
-
-    Key settings:
-    - flagRequestFilterKeyEvents: required to receive key events in onKeyEvent()
-    - canInterceptKeyEvents: required to be able to consume/block key events
-    - accessibilityEventTypes="typeAllMask": lets the service stay active
+    canInterceptKeyEvents is set programmatically in onServiceConnected()
+    to avoid AAPT2 attribute resolution issues on some SDK versions.
 -->
 <accessibility-service
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:accessibilityEventTypes="typeAllMask"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagRequestFilterKeyEvents"
-    android:canInterceptKeyEvents="true"
     android:description="@string/service_label"
     android:notificationTimeout="100"
     android:settingsActivity=".MainActivity" />
