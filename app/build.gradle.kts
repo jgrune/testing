@@ -22,10 +22,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
         debug {
-            applicationIdSuffix = ".debug"
+            // No suffix — keeps package name consistent for sideloading
         }
     }
 
@@ -40,18 +39,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-    }
-
-    // Rename output APK
-    applicationVariants.all {
-        outputs.all {
-            val output = this as? com.android.build.gradle.internal.api.BaseVariantOutputImpl
-            if (buildType.name == "release") {
-                output?.outputFileName = "tv-button-override.apk"
-            } else {
-                output?.outputFileName = "tv-button-override-debug.apk"
-            }
-        }
     }
 }
 
