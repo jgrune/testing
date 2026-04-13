@@ -20,8 +20,8 @@ class AppPickerAdapter(
             view.isFocusable = true
             view.isFocusableInTouchMode = true
             view.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_ID.toInt()) {
+                val position = absoluteAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
                     onSelect(apps[position])
                 }
             }
