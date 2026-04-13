@@ -1,7 +1,6 @@
 package com.tvremote.buttonoverride
 
 import android.accessibilityservice.AccessibilityService
-import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Intent
 import android.view.KeyEvent
 import android.view.accessibility.AccessibilityEvent
@@ -14,16 +13,6 @@ class RemoteButtonService : AccessibilityService() {
         super.onCreate()
         mappingStore = MappingStore(this)
         instance = this
-    }
-
-    override fun onServiceConnected() {
-        super.onServiceConnected()
-        // Programmatically add the key-intercept capability so we don't need
-        // android:canInterceptKeyEvents in the XML (AAPT2 rejects it on some SDK versions)
-        val info = serviceInfo
-        info.capabilities = info.capabilities or
-                AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS
-        setServiceInfo(info)
     }
 
     override fun onDestroy() {
