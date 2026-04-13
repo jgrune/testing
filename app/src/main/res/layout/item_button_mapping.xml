@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/item_background"
+    android:padding="16dp"
+    android:layout_marginBottom="6dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="blocksDescendants">
+
+    <!-- Button name and keycode -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_button_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_keycode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- Arrow -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="→"
+        android:textColor="@color/text_secondary"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="16dp" />
+
+    <!-- Mapped app name -->
+    <TextView
+        android:id="@+id/text_app_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/accent_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Edit button -->
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:textSize="12sp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="6dp"
+        android:backgroundTint="@color/accent_primary"
+        android:layout_marginStart="12dp"
+        android:focusable="true" />
+
+    <!-- Delete button -->
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:textSize="12sp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="6dp"
+        android:backgroundTint="@color/accent_danger"
+        android:layout_marginStart="8dp"
+        android:focusable="true" />
+
+</LinearLayout>

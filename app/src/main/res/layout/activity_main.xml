@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_primary"
+    android:padding="32dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- Service status pill -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:background="@drawable/bg_card">
+
+            <TextView
+                android:id="@+id/label_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_service"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/status_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/service_inactive"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Enable service banner -->
+    <Button
+        android:id="@+id/btn_enable_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enable_service_prompt"
+        android:textSize="15sp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/accent_warning"
+        android:textColor="@color/bg_primary"
+        android:focusable="true"
+        android:visibility="visible" />
+
+    <!-- Section title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/section_mappings"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/empty_mappings"
+        android:textColor="@color/text_secondary"
+        android:textSize="17sp"
+        android:lineSpacingExtra="6dp"
+        android:visibility="visible" />
+
+    <!-- Mappings list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_mappings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:visibility="gone" />
+
+    <!-- Add button -->
+    <Button
+        android:id="@+id/btn_detect_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/detect_button"
+        android:textSize="16sp"
+        android:paddingVertical="14dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/accent_primary"
+        android:focusable="true" />
+
+</LinearLayout>

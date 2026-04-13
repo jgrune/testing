@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_primary">#0D0D1A</color>
+    <color name="bg_card">#1A1A2E</color>
+    <color name="bg_item_focused">#1E3A5F</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8899AA</color>
+
+    <!-- Accents -->
+    <color name="accent_primary">#4A90E2</color>
+    <color name="accent_warning">#F5A623</color>
+    <color name="accent_danger">#E24A4A</color>
+
+    <!-- Status -->
+    <color name="status_active">#4CAF50</color>
+    <color name="status_inactive">#F44336</color>
+</resources>
