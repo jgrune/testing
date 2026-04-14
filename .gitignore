@@ -1,0 +1,18 @@
+# Android build artifacts
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# APK files (CI builds them)
+*.apk
+*.aab
+
+# Gradle wrapper cache
+!gradle/wrapper/gradle-wrapper.jar

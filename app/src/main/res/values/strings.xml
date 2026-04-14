@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TV Button Override</string>
+    <string name="service_label">TV Button Override Service</string>
+
+    <!-- Status -->
+    <string name="label_service">Service:</string>
+    <string name="service_active">Active</string>
+    <string name="service_inactive">Inactive</string>
+    <string name="enable_service_prompt">Tap to enable the Accessibility Service (required for button interception)</string>
+
+    <!-- Main screen -->
+    <string name="section_mappings">BUTTON MAPPINGS</string>
+    <string name="detect_button">+ Detect &amp; Map a Remote Button</string>
+    <string name="empty_mappings">No button mappings yet.\n\nPress \"Detect &amp; Map a Remote Button\" below,\nthen press any button on your remote to get started.</string>
+
+    <!-- Button detect screen -->
+    <string name="detect_title">Detect Remote Button</string>
+    <string name="detect_prompt">Press any button on your remote control now.\n(Back and Home buttons are reserved.)</string>
+    <string name="key_detected_info">Detected: %1$s  (keycode %2$d)</string>
+    <string name="key_detected_prompt">Button detected! Give it a name so you remember which one it is:</string>
+    <string name="label_button_name">Button Label</string>
+    <string name="hint_button_name">e.g. Netflix Button, Free TV Button…</string>
+    <string name="detect_tip">Tip: If pressing a button doesn\'t register here, it may be handled at the system level and cannot be intercepted.</string>
+
+    <!-- App picker screen -->
+    <string name="pick_app_title">Select App Override</string>
+    <string name="pick_app_for">Select app for: %1$s</string>
+    <string name="pick_app_subtitle">Select which app to open when this button is pressed</string>
+    <string name="remove_mapping">Remove Override</string>
+
+    <!-- Actions -->
+    <string name="edit">Edit</string>
+    <string name="delete">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Detect Again</string>
+    <string name="choose_app">Choose App →</string>
+</resources>
