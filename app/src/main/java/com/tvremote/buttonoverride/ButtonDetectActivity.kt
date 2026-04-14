@@ -36,6 +36,11 @@ class ButtonDetectActivity : FragmentActivity() {
 
         // Tell the service to pass all key events through while we're detecting
         RemoteButtonService.isDetecting = true
+        RemoteButtonService.detectionCallback = { keyCode ->
+            runOnUiThread {
+                handleKeyDetected(keyCode)
+            }
+        }
 
         btnProceed.setOnClickListener {
             if (detectedKeyCode != -1) {
@@ -64,6 +69,7 @@ class ButtonDetectActivity : FragmentActivity() {
         super.onDestroy()
         // Restore normal service behavior
         RemoteButtonService.isDetecting = false
+        RemoteButtonService.detectionCallback = null
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -72,6 +78,18 @@ class ButtonDetectActivity : FragmentActivity() {
             return super.onKeyDown(keyCode, event)
         }
 
+        if (detectedKeyCode == -1) {
+            handleKeyDetected(keyCode)
+            return true // consume the event
+        }
+        
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun handleKeyDetected(keyCode: Int) {
+        // Stop detecting so user can use d-pad to navigate and type
+        RemoteButtonService.isDetecting = false
+        
         // Capture the keycode
         detectedKeyCode = keyCode
         val keyName = KeyEvent.keyCodeToString(keyCode)
@@ -81,8 +99,6 @@ class ButtonDetectActivity : FragmentActivity() {
         nameField.setText(keyName.replace("KEYCODE_", "").replace("_", " ").lowercase()
             .replaceFirstChar { it.uppercase() })
         confirmSection.visibility = View.VISIBLE
-
-        return true // consume the event
     }
 
     private fun resetDetection() {
@@ -91,5 +107,8 @@ class ButtonDetectActivity : FragmentActivity() {
         keyInfoText.text = ""
         nameField.setText("")
         confirmSection.visibility = View.GONE
+        
+        // Resume detecting
+        RemoteButtonService.isDetecting = true
     }
 }
